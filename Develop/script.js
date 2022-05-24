@@ -12,96 +12,77 @@ var generateBtn = document.querySelector("#generate");
 
   passwordText.value = password;
  }
- 
+ generateBtn.addEventListener("click", writePassword);
 
  
-  var symbol = ["!", "@", "#"]
-  var lowerCase = "lowercase"
-  var upperCase = "uppercase"
-  var allCase = "Both"
-  var numericValue = Math.floor(Math.random() *10);
-  console.log(numericValue);
-  
-  
+
+
+
   
   function generatePassword(){
-  var promptLength = window.prompt("How long would you like your password?");
+  var promptLength = window.prompt("How many characters would you like? The number has to be between 8 and 128.");
+  
   
     if (promptLength < 8 || promptLength > 128){
       window.alert("Please choose a number between 8 and 128 characters");
-      console.log(promptLength);
+      
       generatePassword();
-      
-
-  }
-  
-  
-
-    else if (promptLength >= 8 || promptLength <= 128){
-      window.alert("Next is style.");
-      
     }
+
+    var characterUpper = confirm ("Do you want uppercase?");
+      var characterLower = confirm ("Do you want lowercase?");
+      console.log("characterlowering shows " + characterLower);
+      var characterStyle = confirm ("Do you want special characters?");
+      var numbers =  Numbers();
+      console.log(numbers + " This is the numbers");
+
+      if (!characterUpper && !characterStyle && !characterLower && !numbers) {
+          window.alert("Please choose at least one character style.");
+          generatePassword();
+      }
+      passwordInit(promptLength,characterLower,characterUpper,characterStyle,numbers)
+    }
+  function passwordInit(pL,cL,cU,cS,num) {
+    var character = new Array(pL);
+    for (var i = 0; i< pL; i++) {
+      
+        console.log();
+      }
+
+    
+  }
     function Numbers() {
     var numbers = confirm ("Do you want numbers?");
+      return numbers;
 
-    if (numbers === true){
-      console.log(numericValue);
-      
-    
-    }
-
-    
-      
-    }
-    Numbers();
-    function Styles(){
-    
-
-    
-      var passwordCase = window.prompt("Would you like uppercase, lowercase, or both?")
-    
-
-    if (passwordCase === "lowercase" || passwordCase === "LOWERCASE"){
-      console.log(lowerCase);
-    }
-
-    if(passwordCase === "uppercase" || passwordCase === "Uppercase"){
-      console.log(upperCase);
-    }
-
-    else if (passwordCase === "both" || passwordCase === "BOTH") {
-      console.log(allCase);
-    }
-
-    else {
-      window.alert("Please choose an answer");
-     
-    }
-    
   }
-  Styles();
+  
     
-    //var passwordContent = [promptLength, numericValue];
-  //console.log(passwordContent);
-
+      
     
-
-    var someFar = promptLength + symbol[2];
-    window.alert(someFar);
-
+   
     
   
+    
+    
   
-}
+    
+   
+  
+
+  
+
+
+  
    
 
-    generateBtn.addEventListener("click", writePassword);
+    
 
     
 
-  writePassword();
-  generatePassword();
- 
+  
+  
+  
     
 
   
