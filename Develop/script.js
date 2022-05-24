@@ -42,12 +42,27 @@ var generateBtn = document.querySelector("#generate");
       }
       passwordInit(promptLength,characterLower,characterUpper,characterStyle,numbers)
     }
-  function passwordInit(pL,cL,cU,cS,num) {
+    
+    function generateRandomLetter() {
+      const alphabet = "abcdefghijklmnopqrstuvwxyz"
+    
+      return alphabet[Math.floor(Math.random() * alphabet.length)]
+    }
+  function passwordInit(pL,cL,cU,cS,num,) {
     var character = new Array(pL);
+    
+    var booUpper = true || false;
     for (var i = 0; i< pL; i++) {
-      
-        console.log();
+        
+         character[i] = generateRandomLetter();
+
+         if (characterUpper ) {
+          character = generateRandomLetter().toUpperCase;
+        }
+         
       }
+       
+console.log(character);
 
     
   }
