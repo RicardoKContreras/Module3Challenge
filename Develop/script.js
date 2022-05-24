@@ -21,7 +21,8 @@ var generateBtn = document.querySelector("#generate");
   
   function generatePassword(){
   var promptLength = window.prompt("How many characters would you like? The number has to be between 8 and 128.");
-  
+
+
   
     if (promptLength < 8 || promptLength > 128){
       window.alert("Please choose a number between 8 and 128 characters");
@@ -40,7 +41,8 @@ var generateBtn = document.querySelector("#generate");
           window.alert("Please choose at least one character style.");
           generatePassword();
       }
-      passwordInit(promptLength,characterLower,characterUpper,characterStyle,numbers)
+   var char = passwordInit(promptLength,characterLower,characterUpper,characterStyle,numbers);
+
     }
     
     function generateRandomLetter() {
@@ -48,21 +50,51 @@ var generateBtn = document.querySelector("#generate");
     
       return alphabet[Math.floor(Math.random() * alphabet.length)]
     }
+
+    function generateRandomSymbol() {
+      const specialCharacter = "!@#$%&*)("
+    
+      return specialCharacter[Math.floor(Math.random() * specialCharacter.length)]
+    }
+
   function passwordInit(pL,cL,cU,cS,num,) {
     var character = new Array(pL);
     
-    var booUpper = true || false;
+    var uppercaseAssigned = false;
+    var lowercaseAssigned = false;
+    var specialcharacterAssigned = false;
+    var numberAssigned = false;
     for (var i = 0; i< pL; i++) {
-        
-         character[i] = generateRandomLetter();
 
-         if (characterUpper ) {
-          character = generateRandomLetter().toUpperCase;
+         if (cU && !uppercaseAssigned) {
+          character[i] = generateRandomLetter().toUpperCase();
+          uppercaseAssigned = true;
         }
+      else if (cL && !lowercaseAssigned){
+          character[i] = generateRandomLetter().toLowerCase();
+          lowercaseAssigned = true;
+        }
+        else if(cS && !specialcharacterAssigned){
+          character[i] = generateRandomSymbol();
+          specialcharacterAssigned = true;
+        }
+
+        else if(num && !numberAssigned) {
+          character[i] = Math.floor(Math.random() *10);
+          numberAssigned = true;
+        }
+        else {
+          uppercaseAssigned = false;
+          lowercaseAssigned = false;
+          specialcharacterAssigned = false;
+          numberAssigned = false;
+          i--;
+        } 
+
          
       }
-       
-console.log(character);
+       return character;
+
 
     
   }
