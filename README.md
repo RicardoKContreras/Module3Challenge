@@ -26,3 +26,15 @@ WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
+
+
+
+## Notes
+* When `Generate Password` button is clicked, a prompt asks the question `How many characters would you like? The number has to be between 8 and 128.`
+
+* Then you are asked to `confirm` `Do you want uppercase? ` `Do you want lowercase? ` `Do you want special characters? ` `Do you want numbers? `
+
+* After answering all of the `confirmation prompts` a `window alert` shows the `generated password` and the password is shown in the `text Box`
+
+
+https://ricardokcontreras.github.io/Module3Challenge/ `Deployed Application`

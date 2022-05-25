@@ -9,12 +9,17 @@ var generateBtn = document.querySelector("#generate");
  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  
+  
+  
   passwordText.value = password;
+  
  }
- generateBtn.addEventListener("click", writePassword);
-
  
+ 
+ generateBtn.addEventListener("click", writePassword);{
+ eliminateCommas 
+ }
 
 
 
@@ -32,32 +37,43 @@ var generateBtn = document.querySelector("#generate");
 
     var characterUpper = confirm ("Do you want uppercase?");
       var characterLower = confirm ("Do you want lowercase?");
-      console.log("characterlowering shows " + characterLower);
       var characterStyle = confirm ("Do you want special characters?");
       var numbers =  Numbers();
-      console.log(numbers + " This is the numbers");
+      function Numbers() {
+        var numbers = confirm ("Do you want numbers?");
+          return numbers;
+    
+      }
 
       if (!characterUpper && !characterStyle && !characterLower && !numbers) {
           window.alert("Please choose at least one character style.");
           generatePassword();
       }
-   var char = passwordInit(promptLength,characterLower,characterUpper,characterStyle,numbers);
+   var characterPassword = passwordInit(promptLength,characterLower,characterUpper,characterStyle,numbers);
+   var eliminateCommas = characterPassword.join("");
+   window.alert(eliminateCommas);
+   return eliminateCommas;
+    
+    
+   
+   
+   
 
     }
     
-    function generateRandomLetter() {
-      const alphabet = "abcdefghijklmnopqrstuvwxyz"
+    function generateRandomAlphabet() {
+      var letters = "abcdefghijklmnopqrstuvwxyz"
     
-      return alphabet[Math.floor(Math.random() * alphabet.length)]
+      return letters[Math.floor(Math.random() * letters.length)]
     }
 
     function generateRandomSymbol() {
-      const specialCharacter = "!@#$%&*)("
+      var specialCharacter = "!@#$%&*)("
     
       return specialCharacter[Math.floor(Math.random() * specialCharacter.length)]
     }
 
-  function passwordInit(pL,cL,cU,cS,num,) {
+  function passwordInit(pL,cL,cU,cS,num) {
     var character = new Array(pL);
     
     var uppercaseAssigned = false;
@@ -67,11 +83,11 @@ var generateBtn = document.querySelector("#generate");
     for (var i = 0; i< pL; i++) {
 
          if (cU && !uppercaseAssigned) {
-          character[i] = generateRandomLetter().toUpperCase();
+          character[i] = generateRandomAlphabet().toUpperCase();
           uppercaseAssigned = true;
         }
       else if (cL && !lowercaseAssigned){
-          character[i] = generateRandomLetter().toLowerCase();
+          character[i] = generateRandomAlphabet().toLowerCase();
           lowercaseAssigned = true;
         }
         else if(cS && !specialcharacterAssigned){
@@ -95,14 +111,10 @@ var generateBtn = document.querySelector("#generate");
       }
        return character;
 
-
+      
     
   }
-    function Numbers() {
-    var numbers = confirm ("Do you want numbers?");
-      return numbers;
-
-  }
+   
   
     
       
