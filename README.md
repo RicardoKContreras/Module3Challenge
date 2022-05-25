@@ -38,3 +38,10 @@ THEN the password is either displayed in an alert or written to the page
 
 
 https://ricardokcontreras.github.io/Module3Challenge/ `Deployed Application`
+
+
+* screen shot of work
+
+![generatepasswordscreenshot](https://user-images.githubusercontent.com/104086686/170185516-70d153fa-2b3a-40bd-8ae4-dfd7a87dd22b.png)
+
+
